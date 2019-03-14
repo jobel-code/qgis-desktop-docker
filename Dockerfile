@@ -1,5 +1,5 @@
-FROM ubuntu:bionic
-MAINTAINER drjobel
+FROM ubuntu:xenial
+MAINTAINER jobel-code
 # ORIGINAL SOURCE OF INSPIRATION: [Julien ANCELIN](https://github.com/jancelin/docker-qgis-desktop/)
 
 ENV LANG C.UTF-8
@@ -13,7 +13,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get -y update
 RUN apt-get install -y gnupg apt-transport-https ca-certificates
 
-RUN echo "deb https://qgis.org/ubuntu-nightly-ltr bionic main" >> /etc/apt/sources.list
+RUN echo "deb http://qgis.org/debian-nightly xenial main" >> /etc/apt/sources.list
 RUN gpg --keyserver keyserver.ubuntu.com --recv CAEB3DC3BDF7FB45
 RUN gpg --export --armor CAEB3DC3BDF7FB45 | apt-key add -
 RUN apt-get update && \
