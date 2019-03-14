@@ -6,6 +6,7 @@ create a file on desktop
 
 
 ---
+```
 #!/bin/sh
 
 
@@ -24,11 +25,15 @@ docker run --rm \
     --net=host \
     mapcloud/qgis-desktop-docker:latest
 
-
+```
 ---
 set executable flag:
+
     `chmod +x ./qgis-docker`
 run:
+
     `./qgis-docker`
 
-# CREDITS: [Julien ANCELIN](https://hub.docker.com/r/jancelin/docker-qgis-desktop/)
+# CREDITS:
+
+[Julien ANCELIN](https://hub.docker.com/r/jancelin/docker-qgis-desktop/)
