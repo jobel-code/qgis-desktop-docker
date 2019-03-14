@@ -1,0 +1,29 @@
+# create a file on desktop
+nano ./qgis-docker
+
+
+####################################################################
+#!/bin/sh
+
+# CREDITS: [Julien ANCELIN](https://hub.docker.com/r/jancelin/docker-qgis-desktop/)
+# Should be platform neutral - at least working on Linux and Windows
+USER_NAME=`basename $HOME`
+# HHHOME is used to pass the HOME directory of the user running qgis
+# and is used in "start.sh" to create the same user within the container.
+# Users home is mounted as home
+# --rm will remove the container as soon as it ends
+docker run --rm \
+    -i -t \
+    -v ${HOME}:/home/${USER_NAME} \
+    -v /tmp/.X11-unix:/tmp/.X11-unix \
+    -e DISPLAY=unix$DISPLAY \
+    -e HHHOME=${HOME} \
+    --net=host \
+    mapcloud/qgis-desktop-docker:latest
+
+
+##############################################################    
+set executable flag:
+    `chmod +x ./qgis-docker`
+run:
+    `./qgis-docker`
